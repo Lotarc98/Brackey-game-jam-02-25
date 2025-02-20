@@ -1,0 +1,98 @@
+{
+    "name": "PlayerControls1",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "2e68f179-7145-4f5d-bd15-d8cb84f9fc9c",
+            "actions": [
+                {
+                    "name": "OnMovePlayer1",
+                    "type": "Value",
+                    "id": "59d41eaa-0a38-4639-9f86-8bfd1043267a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "InteractPlayer1",
+                    "type": "Button",
+                    "id": "2d1d0b6c-c672-435b-95f9-a7d7c8ddc3e5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "OnMove",
+                    "id": "106fb687-457a-4e5a-9abc-9af48373d510",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMovePlayer1",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "47eb383d-7ba8-49fb-bdf6-bd05df70f4cf",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMovePlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "60f9a6ac-d487-4a5e-80c3-14e623cbfe65",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMovePlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "2646ff4d-cfe6-4b37-b380-a42a62a927d9",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMovePlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "a45aeeda-c8c9-4a9d-bc97-180fd9edd342",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnMovePlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f7238f6d-2534-44c7-8bf0-a4872ce6a31b",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractPlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
