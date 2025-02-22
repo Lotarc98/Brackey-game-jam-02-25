@@ -135,6 +135,9 @@ public class PlayerMovement : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic; // Prevent movement from collisions
         //rb.simulated = false; // Disable physics interactions
         playerInput.enabled = false; // Disable input when downed
+        
+        animator.SetBool("IsDowned", true);
+        animator.SetTrigger("Downed");
     }
 
     public void Revive()
@@ -147,6 +150,9 @@ public class PlayerMovement : MonoBehaviour
         moveInput = Vector2.zero;
         rb.velocity = Vector2.zero;
         playerInput.enabled = true;
+        
+        animator.SetBool("IsDowned", false);
+        animator.SetTrigger("Revive");
 
         // Notify the enemy AI that this player has been revived
         FindObjectOfType<EnemyAI>().NotifyPlayerRevived(transform);
