@@ -89,11 +89,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log(playerType + " pressed interact button.");
             interactableObject.AssignPlayer(this);
+            
+            animator.SetBool("IsCarrying", true);
         } 
         if (context.canceled) // When button is released
         {
             Debug.Log(playerType + " released interact button.");
             interactableObject.UnassignPlayer(this);
+            
+            animator.SetBool("IsCarrying", false);
         }
 
     }
@@ -166,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetCarrying(bool carrying)
     {
         isCarrying = carrying;
+        animator.SetBool("IsCarrying", carrying);
         Debug.Log(playerType + " speed set to " + (carrying ? carryingSpeed : normalSpeed));
     }
 
