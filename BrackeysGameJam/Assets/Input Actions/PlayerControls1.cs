@@ -44,6 +44,15 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RevivePlayer1"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbb425f0-219f-4a6b-8535-912ae62abb01"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
                     ""action"": ""InteractPlayer1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb91c0e5-b221-45c2-b461-e3ec158721d0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RevivePlayer1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_OnMovePlayer1 = m_Gameplay.FindAction("OnMovePlayer1", throwIfNotFound: true);
         m_Gameplay_InteractPlayer1 = m_Gameplay.FindAction("InteractPlayer1", throwIfNotFound: true);
+        m_Gameplay_RevivePlayer1 = m_Gameplay.FindAction("RevivePlayer1", throwIfNotFound: true);
     }
 
     ~@PlayerControls1()
@@ -190,12 +211,14 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_OnMovePlayer1;
     private readonly InputAction m_Gameplay_InteractPlayer1;
+    private readonly InputAction m_Gameplay_RevivePlayer1;
     public struct GameplayActions
     {
         private @PlayerControls1 m_Wrapper;
         public GameplayActions(@PlayerControls1 wrapper) { m_Wrapper = wrapper; }
         public InputAction @OnMovePlayer1 => m_Wrapper.m_Gameplay_OnMovePlayer1;
         public InputAction @InteractPlayer1 => m_Wrapper.m_Gameplay_InteractPlayer1;
+        public InputAction @RevivePlayer1 => m_Wrapper.m_Gameplay_RevivePlayer1;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +234,9 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
             @InteractPlayer1.started += instance.OnInteractPlayer1;
             @InteractPlayer1.performed += instance.OnInteractPlayer1;
             @InteractPlayer1.canceled += instance.OnInteractPlayer1;
+            @RevivePlayer1.started += instance.OnRevivePlayer1;
+            @RevivePlayer1.performed += instance.OnRevivePlayer1;
+            @RevivePlayer1.canceled += instance.OnRevivePlayer1;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -221,6 +247,9 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
             @InteractPlayer1.started -= instance.OnInteractPlayer1;
             @InteractPlayer1.performed -= instance.OnInteractPlayer1;
             @InteractPlayer1.canceled -= instance.OnInteractPlayer1;
+            @RevivePlayer1.started -= instance.OnRevivePlayer1;
+            @RevivePlayer1.performed -= instance.OnRevivePlayer1;
+            @RevivePlayer1.canceled -= instance.OnRevivePlayer1;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -242,5 +271,6 @@ public partial class @PlayerControls1: IInputActionCollection2, IDisposable
     {
         void OnOnMovePlayer1(InputAction.CallbackContext context);
         void OnInteractPlayer1(InputAction.CallbackContext context);
+        void OnRevivePlayer1(InputAction.CallbackContext context);
     }
 }
